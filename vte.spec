@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.28.2
-Release  : 7
+Release  : 8
 URL      : http://ftp.gnome.org/pub/GNOME/sources/vte/0.28/vte-0.28.2.tar.xz
 Source0  : http://ftp.gnome.org/pub/GNOME/sources/vte/0.28/vte-0.28.2.tar.xz
 Summary  : Vte terminal widget.
