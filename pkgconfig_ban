@@ -3,3 +3,5 @@
 # undesirable. One name per line, no whitespace.
 #
 pygtk-2.0
+gtk+-$GTK_API_VERSION
+
