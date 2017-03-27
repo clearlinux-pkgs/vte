@@ -1,5 +1,5 @@
 PKG_NAME := vte
-URL := http://ftp.gnome.org/pub/GNOME/sources/vte/0.46/vte-0.46.1.tar.xz
+URL := https://download.gnome.org/sources/vte/0.48/vte-0.48.1.tar.xz
 
 
 include ../common/Makefile.common
