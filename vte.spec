@@ -4,12 +4,13 @@
 #
 Name     : vte
 Version  : 0.48.1
-Release  : 10
+Release  : 11
 URL      : https://download.gnome.org/sources/vte/0.48/vte-0.48.1.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.48/vte-0.48.1.tar.xz
 Summary  : Vte terminal widget.
 Group    : Development/Tools
 License  : LGPL-2.1
+Requires: vte-data
 Requires: vte-lib
 Requires: vte-doc
 Requires: vte-locales
@@ -38,10 +39,19 @@ and a minimal sample application (vte) using that.  Vte is mainly used in
 gnome-terminal, but can also be used to embed a console/terminal in games,
 editors, IDEs, etc.
 
+%package data
+Summary: data components for the vte package.
+Group: Data
+
+%description data
+data components for the vte package.
+
+
 %package dev
 Summary: dev components for the vte package.
 Group: Development
 Requires: vte-lib
+Requires: vte-data
 Provides: vte-devel
 
 %description dev
@@ -59,6 +69,7 @@ doc components for the vte package.
 %package lib
 Summary: lib components for the vte package.
 Group: Libraries
+Requires: vte-data
 
 %description lib
 lib components for the vte package.
@@ -77,7 +88,7 @@ locales components for the vte package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490638285
+export SOURCE_DATE_EPOCH=1491328113
 %configure --disable-static --enable-vala=no
 make V=1  %{?_smp_mflags}
 
@@ -89,13 +100,18 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1490638285
+export SOURCE_DATE_EPOCH=1491328113
 rm -rf %{buildroot}
 %make_install
 %find_lang vte-2.91
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/lib64/girepository-1.0/Vte-2.91.typelib
+/usr/share/gir-1.0/*.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -109,10 +125,8 @@ rm -rf %{buildroot}
 /usr/include/vte-2.91/vte/vteterminal.h
 /usr/include/vte-2.91/vte/vtetypebuiltins.h
 /usr/include/vte-2.91/vte/vteversion.h
-/usr/lib64/girepository-1.0/Vte-2.91.typelib
 /usr/lib64/libvte-2.91.so
 /usr/lib64/pkgconfig/vte-2.91.pc
-/usr/share/gir-1.0/*.gir
 
 %files doc
 %defattr(-,root,root,-)
