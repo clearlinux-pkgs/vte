@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.48.1
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/vte/0.48/vte-0.48.1.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.48/vte-0.48.1.tar.xz
 Summary  : Vte terminal widget.
@@ -88,7 +88,11 @@ locales components for the vte package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1491328113
+export SOURCE_DATE_EPOCH=1491833159
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 %configure --disable-static --enable-vala=no
 make V=1  %{?_smp_mflags}
 
@@ -100,7 +104,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1491328113
+export SOURCE_DATE_EPOCH=1491833159
 rm -rf %{buildroot}
 %make_install
 %find_lang vte-2.91
