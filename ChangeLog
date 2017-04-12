@@ -1,3 +1,55 @@
+commit 3e7f21006b751136963fd1520dd1b157a68c659c
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Mon Apr 10 21:27:19 2017 +0200
+
+    Version 0.48.2
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3fe05ffc05ce6516b1f0cbbbef0de968e18404b0
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Fri Apr 7 01:51:14 2017 +0200
+
+    emulation: Swallow OSC 8
+    
+    Accept OSC 8 but make it a no-op, in preparation for the forthcoming
+    hyperlink feature.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=779734
+    (cherry picked from commit cd8c8b30241b0d357bcdf72256102d0afcc350b6)
+
+ src/caps.cc        | 2 ++
+ src/vteseq-n.gperf | 1 +
+ src/vteseq.cc      | 6 ++++++
+ 3 files changed, 9 insertions(+)
+
+commit ff1861f9235923b96c515a77cab82d98f8644c28
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Tue Mar 28 22:58:26 2017 +0200
+
+    spawn: async: Check for nullptr before unreffing
+    
+    This needs to handle a null terminal. Improves the fix from
+    commit 8ad57f190f33c41b1bc9051e919844a294feada9.
+    
+    (cherry picked from commit f7e3c8ad342c4965d433bf3b05f418b9e984aa1f)
+
+ src/vtegtk.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit bc2350df0fe7649160a3864826f10b23c78ef5ca
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Tue Mar 28 22:51:45 2017 +0200
+
+    spawn: async: Release reference to VteTerminal
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=780663
+    (cherry picked from commit 8ad57f190f33c41b1bc9051e919844a294feada9)
+
+ src/vtegtk.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
 commit e6f4c83f12e2acf2eda6c58da5d78a0141380225
 Author: Christian Persch <chpe@src.gnome.org>
 Date:   Tue Mar 21 18:57:51 2017 +0100
