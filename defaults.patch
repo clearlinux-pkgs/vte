@@ -1,0 +1,11 @@
+--- vte-0.48.2/src/vtedefines.hh~	2017-02-24 12:49:18.000000000 +0000
++++ vte-0.48.2/src/vtedefines.hh	2017-04-15 18:15:41.843711826 +0000
+@@ -63,7 +63,7 @@
+ #define VTE_CURSOR_FG                   262
+ #define VTE_PALETTE_SIZE		263
+ 
+-#define VTE_SCROLLBACK_INIT		512
++#define VTE_SCROLLBACK_INIT		4096
+ #define VTE_DEFAULT_CURSOR		GDK_XTERM
+ #define VTE_MOUSING_CURSOR		GDK_LEFT_PTR
+ #define VTE_TAB_MAX			999
