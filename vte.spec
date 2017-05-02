@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.48.2
-Release  : 14
+Release  : 15
 URL      : https://download.gnome.org/sources/vte/0.48/vte-0.48.2.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.48/vte-0.48.2.tar.xz
 Summary  : Vte terminal widget.
