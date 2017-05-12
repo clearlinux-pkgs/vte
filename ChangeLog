@@ -1,3 +1,100 @@
+commit 992c481f21e266e7cdfcee1d425b18da4df9ef8d
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Sun Apr 23 23:57:57 2017 +0200
+
+    emulation: Disregard bce only when autowrapping to the new line
+    
+    Apply bce (background color erase) on a line that newly appears due to an
+    explicit escape sequence, but not when the text overflows to the next line.
+    
+    This improves the fix from commit 18171bcfeaf8f3bf4bcb8a04dfcff916a3fbc40b
+    and fixes the le editor.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=754596#c15
+    (cherry picked from commit a26a60b8e564968b61716f0d2e52e17cd9362413)
+
+ src/vte.cc         | 13 +++++++------
+ src/vteinternal.hh |  2 +-
+ src/vteseq.cc      |  4 ++--
+ 3 files changed, 10 insertions(+), 9 deletions(-)
+
+commit 129c4e74d9d53bff8c45401e71f075d685b8503e
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Wed Apr 26 11:21:41 2017 +0200
+
+    build: vala: Fix check for valac >= 0.31.1
+    
+    Need to always check this, since we build (but not install) the
+    test application when --enable-vala is given.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=781720
+    (cherry picked from commit 66c974291c38822e7591dccfe8b3665fea5f2b28)
+
+ configure.ac | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+commit 71aa3ed56d548d82123113be58a2fdbcb2ca346b
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Wed Apr 26 11:13:22 2017 +0200
+
+    build: vala: Bump vapigen required version to 0.24
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=781322
+    (cherry picked from commit 60dfd87ea017ddce216ef881806aabe12a9dbb09)
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1e6071305c34cb3b5ea0548c7b01710492acd55e
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Tue Apr 25 23:06:13 2017 +0200
+
+    pty: spawn: Always fill in the GError on failure
+    
+    (cherry picked from commit d2e38f44ec644f94e79f6aa923da5b57601a47df)
+
+ src/pty.cc | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+commit 57fa36fa775a8e1fac1aec35c4cb1bef92fc2da8
+Author: Yuras Shumovich <shumovichy@gmail.com>
+Date:   Tue Apr 18 09:36:45 2017 +0000
+
+    Update Belarusian translation
+
+ po/be.po | 103 +++++++++++++++++++++++++++++----------------------------------
+ 1 file changed, 48 insertions(+), 55 deletions(-)
+
+commit 71a221d86f00523f4c1566718ec71e75efe7a99d
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Sun Apr 16 22:01:39 2017 +0200
+
+    widget: Add more xkb layout switching codes to the list of modifiers
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=781130
+    (cherry picked from commit 5189b676dff420f53f3ddf7e9b4d7aeee64175d3)
+
+ src/keymap.cc | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit 837cce9ced6bfe317cb97aeca171001da92cb3a1
+Author: gogo <trebelnik2@gmail.com>
+Date:   Tue Apr 11 16:46:42 2017 +0000
+
+    Update Croatian translation
+
+ po/hr.po | 137 ++++++++++++++++++++++++++-------------------------------------
+ 1 file changed, 57 insertions(+), 80 deletions(-)
+
+commit 22998a22e109ec219524a1c4004f8dd54f59dbe6
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Mon Apr 10 21:27:36 2017 +0200
+
+    Post release version bump
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 commit 3e7f21006b751136963fd1520dd1b157a68c659c
 Author: Christian Persch <chpe@src.gnome.org>
 Date:   Mon Apr 10 21:27:19 2017 +0200
