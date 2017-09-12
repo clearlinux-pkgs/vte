@@ -1,4 +1,370 @@
-commit 992c481f21e266e7cdfcee1d425b18da4df9ef8d
+commit 9032a81295fa48b088e6e5ceb366ab0676a5b6df
+Author: Daniel Șerbănescu <daniel@serbanescu.dk>
+Date:   Wed Sep 6 17:16:43 2017 +0000
+
+    Update Romanian translation
+
+ po/ro.po | 101 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 49 insertions(+), 52 deletions(-)
+
+commit bdf5a0ea0370924a494214e9b492ac098e97c579
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Tue Sep 5 23:02:08 2017 +0200
+
+    widget: Fix a crash with hyperlinks if the mouse hasn't entered the widget
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=787283
+
+ src/vte.cc | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit 7f933a505a00864f87b1418f995efaddda29ba70
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Mon Sep 4 20:14:59 2017 +0200
+
+    Post release version bump
+
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit f6a7ad5555839e76d643448124cf6a96d7c5ddd6
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Mon Sep 4 20:11:16 2017 +0200
+
+    Version 0.49.92
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 662919b67a0cfd63f93220a72cb5a8efc69c2863
+Author: Alexander Shopov <ash@kambanaria.org>
+Date:   Sat Sep 2 09:32:34 2017 +0300
+
+    Updated Bulgarian translation
+
+ po/bg.po | 83 ++++++++++++----------------------------------------------------
+ 1 file changed, 15 insertions(+), 68 deletions(-)
+
+commit ba0e1e589faceb8bfdd716790f595f733f698a0d
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Thu Aug 31 21:31:58 2017 +0200
+
+    widget: Use lighter dashed underline for hyperlinks
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=786912
+
+ src/vte.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit ea132fc22bdad37de04dea38ff8f7a95d2d79d1b
+Author: Ask Hjorth Larsen <asklarsen@gmail.com>
+Date:   Mon Aug 28 19:45:52 2017 +0200
+
+    Updated Danish translation
+
+ po/da.po | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+commit efbf38e37be3cac925f5b3540a651fc0133c10a1
+Author: Jordi Mas <jmas@softcatala.org>
+Date:   Tue Aug 22 08:46:21 2017 +0200
+
+    Update Catalan translation
+
+ po/ca.po | 129 +++++++++++++++++++++++++++++----------------------------------
+ 1 file changed, 60 insertions(+), 69 deletions(-)
+
+commit 3e744098a4345fab636dca438f7e1996cdb57f7e
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Sun Aug 20 22:35:27 2017 +0200
+
+    widget: Don't hide the mouse pointer when a popover is presented
+    
+    This was broken in commit 776823da23b81b70e430c494bb66b54954c42d7b.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=786441
+
+ src/vte.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 858ac54a884ae4687e98be2785ba0e1a7bcf45f6
+Author: Piotr Drąg <piotrdrag@gmail.com>
+Date:   Sat Aug 12 02:11:44 2017 +0200
+
+    Update Polish translation
+
+ po/pl.po | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+commit 723ea607ae49f61b2f23af8c7ea43144e9acfb69
+Author: Benjamin Berg <bberg@redhat.com>
+Date:   Wed Jul 19 16:44:46 2017 +0200
+
+    Emit beep on the window instead of the display
+    
+    This means that in GNOME when enabling visual flash (in a11y) then only
+    the gnome-terminal frame will flash instead of the whole screen. Having
+    the whole screen flash is really disrupting and almost all the time the
+    reason for the flash is e.g. tab completion kicking in.
+
+ src/vte.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit fa3bc86008cfe517dbb05deb4dff0059f3749c95
+Author: Emmanuele Bassi <ebassi@gnome.org>
+Date:   Wed Jul 12 17:05:24 2017 +0100
+
+    Fix the generation of the signal marshallers
+    
+    The generation of the signal marshallers is based on an undefined
+    behaviour of the glib-genmarshal tool. Passing both the --header and
+    --body command line arguments is undocumented and untested behaviour.
+    The generated C source adds prototypes for the marshallers, and wraps
+    the whole file between C++ guards.
+    
+    Instead of relying on undocumented behaviour, we can achieve the same
+    result by including the generated header in the generated source.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=784853
+
+ src/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit af889244f9306d8686c6346da35f34694240882e
+Author: Christian Persch <chpe@gnome.org>
+Date:   Tue Jun 13 09:27:06 2017 +0200
+
+    emulation: Swallow iterm2 OSC 133
+    
+    Accept OSC 133 but make it a no-op.
+    
+    When sshing to an osx host the iterm2 integration may be active,
+    causing the remote shell to emit iterm2 OSC 133 sequences that
+    clutter the vte terminal since we don't ignore unknown sequences
+    (bug 403130).
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=783710
+
+ src/caps.cc        |  2 ++
+ src/vteseq-n.gperf |  1 +
+ src/vteseq.cc      | 12 ++++++++++--
+ 3 files changed, 13 insertions(+), 2 deletions(-)
+
+commit a0b0a25b6a53b56095e7df1551cfce8aa0a0906d
+Author: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+Date:   Sat Jun 10 17:46:03 2017 +0200
+
+    Updated Esperanto translation
+
+ po/eo.po | 115 +++++++++++++++++++++++++++++----------------------------------
+ 1 file changed, 53 insertions(+), 62 deletions(-)
+
+commit 61049af2ee9dfe8d5113eafd3597395f8fe27029
+Author: Debarshi Ray <debarshir@gnome.org>
+Date:   Tue May 23 17:13:30 2017 +0200
+
+    Don't set variables to values that are never used
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=783001
+
+ src/vterowdata.cc    | 2 +-
+ src/vtestream-file.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 965ac9144b5989859230cd859e675fd5dfb29eac
+Author: Debarshi Ray <debarshir@gnome.org>
+Date:   Tue May 23 09:56:24 2017 +0200
+
+    pty: Removed unused variable
+    
+    Fallout from b59d76a5073d789f2f948cf928e883cb70cc8a75
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=782977
+
+ src/pty.cc | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 91e9c83878ee389ad63f45c7ec654011b75039e5
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Sun May 7 13:57:41 2017 +0200
+
+    widget: Provide a way to copy the selection to clipboard as HTML
+    
+    Currently, copying to HTML is disabled (#if 0) in the code, because
+    it will generate the potentially huge selection data in both text and
+    HTML formats.
+    
+    Instead, provide API to tell vte which format to use.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=365121
+
+ bindings/vala/app.ui           |   1 +
+ bindings/vala/app.vala         |  12 +-
+ doc/reference/vte-sections.txt |   6 +-
+ src/vte.cc                     | 325 +++++++++++++++++++++--------------------
+ src/vte/vtedeprecated.h        |   4 +
+ src/vte/vteenums.h             |  15 ++
+ src/vte/vteterminal.h          |   3 +-
+ src/vteaccess.cc               |   4 +-
+ src/vtegtk.cc                  |  71 ++++++---
+ src/vteinternal.hh             |  38 ++---
+ 10 files changed, 270 insertions(+), 209 deletions(-)
+
+commit 64be114a87ad20e874860a7a819c16fa394c69f8
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Thu May 4 22:31:21 2017 +0200
+
+    widget: Fix allow-hyperlink's default
+
+ src/vtegtk.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4d9fe82d8ef4eda415edae7a307df093f77e50e6
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Sun Apr 30 23:32:09 2017 +0200
+
+    docs: Remove an obsolete comment
+
+ src/vterowdata.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit 0c0ad520265f4a8fc2e8caced228be1c8aa9553e
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Sun Apr 30 23:29:36 2017 +0200
+
+    img.sh: Fix for newer ImageMagick
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=781865
+
+ perf/img.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 049e0bbc9807311edac246427f3f1f164f60c2da
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Wed Apr 26 11:21:41 2017 +0200
+
+    build: vala: Fix check for valac >= 0.31.1
+    
+    Need to always check this, since we build (but not install) the
+    test application when --enable-vala is given.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=781720
+
+ configure.ac | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+commit c153782c0654f9e99a77207b217fb2778397972e
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Wed Apr 26 11:13:22 2017 +0200
+
+    build: vala: Bump vapigen required version to 0.24
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=781322
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1ae3ae3983598109f8d7b3e97f0db58504402e6a
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Wed Apr 26 00:05:23 2017 +0200
+
+    docs: Fix hyperlink signal name
+
+ src/vtegtk.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d2e38f44ec644f94e79f6aa923da5b57601a47df
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Tue Apr 25 23:06:13 2017 +0200
+
+    pty: spawn: Always fill in the GError on failure
+
+ src/pty.cc | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+commit 92da93ab5aa8ee32335dfb14aacd3597823a103f
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Tue Apr 25 12:53:14 2017 +0200
+
+    Post release version bump
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a79378a2ef0c748f3ba2c2750c659a73be8fcc37
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Tue Apr 25 12:45:30 2017 +0200
+
+    Version 0.49.1
+
+ NEWS         | 5 +++++
+ configure.ac | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit c9e7cbabfe2fd682a80dd8938c317e7aed1195f4
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Tue Apr 25 01:17:11 2017 +0200
+
+    widget,emulation: Add support for OSC 8 hyperlinks (HTML-like anchors)
+    
+    The escape sequences
+      OSC 8 ; params ; URI BEL
+      OSC 8 ; params ; URI ST
+    turn subsequent characters into an HTML-like anchor to the given address.
+    Terminate the hyperlink with the same escape sequence with an empty URI.
+    
+    Params is an optional colon-separated list of key=value assignments. Cells
+    having the same URI and "id" parameter, or cells lacking an "id" that were
+    printed in a single OSC 8 run are underlined together on mouseover.
+    
+    For further details, see
+    https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=779734
+
+ bindings/vala/app.vala         |   7 +
+ doc/reference/vte-docs.xml     |   4 +
+ doc/reference/vte-sections.txt |   3 +
+ perf/hyperlink-demo.txt        |  95 ++++++++++
+ src/debug.c                    |   3 +-
+ src/debug.h                    |   3 +-
+ src/marshal.list               |   1 +
+ src/ring.cc                    | 388 ++++++++++++++++++++++++++++++++++++++---
+ src/ring.h                     |  32 +++-
+ src/vte.cc                     | 281 +++++++++++++++++++++++++++--
+ src/vte/vteterminal.h          |  10 ++
+ src/vteapp.c                   |  19 +-
+ src/vtedefines.hh              |  30 ++++
+ src/vtegtk.cc                  | 121 +++++++++++++
+ src/vtegtk.hh                  |   3 +
+ src/vteinternal.hh             |  19 +-
+ src/vterowdata.h               |  57 +++++-
+ src/vteseq.cc                  | 114 +++++++++++-
+ 18 files changed, 1132 insertions(+), 58 deletions(-)
+
+commit 83674b1b09d0ee695d0577e86849d42f82ab5942
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Tue Apr 25 01:11:10 2017 +0200
+
+    ring: Invert colors for the stream's cells if debugging the ring
+    
+    If debugging the ring (or soon the hyperlink), make cells that are already written
+    to the stream appear with reverse colors. This is so that the boundary is more
+    prominent because this boundary is a potential source of problems.
+
+ src/ring.cc | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit ca7f577a8ff92804d087145a1efad3fb6be2fefc
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Mon Apr 24 13:48:55 2017 +0200
+
+    ring: Tiny code cleanup: maintain GString integrity
+
+ src/ring.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a26a60b8e564968b61716f0d2e52e17cd9362413
 Author: Egmont Koblinger <egmont@gmail.com>
 Date:   Sun Apr 23 23:57:57 2017 +0200
 
@@ -11,100 +377,96 @@ Date:   Sun Apr 23 23:57:57 2017 +0200
     and fixes the le editor.
     
     https://bugzilla.gnome.org/show_bug.cgi?id=754596#c15
-    (cherry picked from commit a26a60b8e564968b61716f0d2e52e17cd9362413)
 
  src/vte.cc         | 13 +++++++------
  src/vteinternal.hh |  2 +-
  src/vteseq.cc      |  4 ++--
  3 files changed, 10 insertions(+), 9 deletions(-)
 
-commit 129c4e74d9d53bff8c45401e71f075d685b8503e
-Author: Christian Persch <chpe@src.gnome.org>
-Date:   Wed Apr 26 11:21:41 2017 +0200
+commit 8e670e32809911094d8fd1c127d80115dce7fcc7
+Author: Behdad Esfahbod <behdad@behdad.org>
+Date:   Tue Apr 18 18:18:05 2017 -0700
 
-    build: vala: Fix check for valac >= 0.31.1
+    Remove custom definition of howmany()
     
-    Need to always check this, since we build (but not install) the
-    test application when --enable-vala is given.
-    
-    https://bugzilla.gnome.org/show_bug.cgi?id=781720
-    (cherry picked from commit 66c974291c38822e7591dccfe8b3665fea5f2b28)
+    vtedraw.cc has been using it off of sys/param.h just fine.
 
- configure.ac | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
+ src/vte.cc     | 5 +----
+ src/vtedraw.cc | 2 +-
+ 2 files changed, 2 insertions(+), 5 deletions(-)
 
-commit 71aa3ed56d548d82123113be58a2fdbcb2ca346b
-Author: Christian Persch <chpe@src.gnome.org>
-Date:   Wed Apr 26 11:13:22 2017 +0200
-
-    build: vala: Bump vapigen required version to 0.24
-    
-    https://bugzilla.gnome.org/show_bug.cgi?id=781322
-    (cherry picked from commit 60dfd87ea017ddce216ef881806aabe12a9dbb09)
-
- configure.ac | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit 1e6071305c34cb3b5ea0548c7b01710492acd55e
-Author: Christian Persch <chpe@src.gnome.org>
-Date:   Tue Apr 25 23:06:13 2017 +0200
-
-    pty: spawn: Always fill in the GError on failure
-    
-    (cherry picked from commit d2e38f44ec644f94e79f6aa923da5b57601a47df)
-
- src/pty.cc | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
-
-commit 57fa36fa775a8e1fac1aec35c4cb1bef92fc2da8
+commit 9f292551493cd7ee0473ebd1de4d0d360771f6a1
 Author: Yuras Shumovich <shumovichy@gmail.com>
 Date:   Tue Apr 18 09:36:45 2017 +0000
 
     Update Belarusian translation
+    
+    (cherry picked from commit 57fa36fa775a8e1fac1aec35c4cb1bef92fc2da8)
 
  po/be.po | 103 +++++++++++++++++++++++++++++----------------------------------
  1 file changed, 48 insertions(+), 55 deletions(-)
 
-commit 71a221d86f00523f4c1566718ec71e75efe7a99d
+commit 776823da23b81b70e430c494bb66b54954c42d7b
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Sun Apr 16 23:08:37 2017 +0200
+
+    widget: Clean up the mouse pointer displaying logic
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=780785
+    https://bugzilla.gnome.org/show_bug.cgi?id=762981
+
+ src/vte.cc         | 58 ++++++++++++++++++++++++++++++------------------------
+ src/vteinternal.hh |  7 +++++--
+ src/vteseq.cc      |  4 ++--
+ 3 files changed, 39 insertions(+), 30 deletions(-)
+
+commit 5189b676dff420f53f3ddf7e9b4d7aeee64175d3
 Author: Egmont Koblinger <egmont@gmail.com>
 Date:   Sun Apr 16 22:01:39 2017 +0200
 
     widget: Add more xkb layout switching codes to the list of modifiers
     
     https://bugzilla.gnome.org/show_bug.cgi?id=781130
-    (cherry picked from commit 5189b676dff420f53f3ddf7e9b4d7aeee64175d3)
 
  src/keymap.cc | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-commit 837cce9ced6bfe317cb97aeca171001da92cb3a1
+commit 279c8d5d256ec7b7cbefb7250c665e3ac23a5d4a
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Fri Apr 14 23:55:32 2017 +0200
+
+    widget: Remove the VteIntCell and VteIntCellAttr unions
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=779734#c57
+
+ src/ring.cc      | 26 +++++++++++++-------------
+ src/ring.h       |  4 ++--
+ src/vte.cc       | 10 +++++-----
+ src/vterowdata.h | 51 +++++++++++++++++----------------------------------
+ src/vteseq.cc    |  4 ++--
+ 5 files changed, 39 insertions(+), 56 deletions(-)
+
+commit bf18bfa791936609b3c5315e928f863ecf2319ff
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Thu Apr 13 11:04:54 2017 +0200
+
+    widget: Support italic in HTML copy-paste target
+
+ src/vte.cc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 6b87524db415f6bb6ee760555986d6c17c0dc4ce
 Author: gogo <trebelnik2@gmail.com>
 Date:   Tue Apr 11 16:46:42 2017 +0000
 
     Update Croatian translation
+    
+    (cherry picked from commit 837cce9ced6bfe317cb97aeca171001da92cb3a1)
 
  po/hr.po | 137 ++++++++++++++++++++++++++-------------------------------------
  1 file changed, 57 insertions(+), 80 deletions(-)
 
-commit 22998a22e109ec219524a1c4004f8dd54f59dbe6
-Author: Christian Persch <chpe@src.gnome.org>
-Date:   Mon Apr 10 21:27:36 2017 +0200
-
-    Post release version bump
-
- configure.ac | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit 3e7f21006b751136963fd1520dd1b157a68c659c
-Author: Christian Persch <chpe@src.gnome.org>
-Date:   Mon Apr 10 21:27:19 2017 +0200
-
-    Version 0.48.2
-
- configure.ac | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-commit 3fe05ffc05ce6516b1f0cbbbef0de968e18404b0
+commit cd8c8b30241b0d357bcdf72256102d0afcc350b6
 Author: Egmont Koblinger <egmont@gmail.com>
 Date:   Fri Apr 7 01:51:14 2017 +0200
 
@@ -114,14 +476,13 @@ Date:   Fri Apr 7 01:51:14 2017 +0200
     hyperlink feature.
     
     https://bugzilla.gnome.org/show_bug.cgi?id=779734
-    (cherry picked from commit cd8c8b30241b0d357bcdf72256102d0afcc350b6)
 
  src/caps.cc        | 2 ++
  src/vteseq-n.gperf | 1 +
  src/vteseq.cc      | 6 ++++++
  3 files changed, 9 insertions(+)
 
-commit ff1861f9235923b96c515a77cab82d98f8644c28
+commit f7e3c8ad342c4965d433bf3b05f418b9e984aa1f
 Author: Christian Persch <chpe@src.gnome.org>
 Date:   Tue Mar 28 22:58:26 2017 +0200
 
@@ -129,38 +490,42 @@ Date:   Tue Mar 28 22:58:26 2017 +0200
     
     This needs to handle a null terminal. Improves the fix from
     commit 8ad57f190f33c41b1bc9051e919844a294feada9.
-    
-    (cherry picked from commit f7e3c8ad342c4965d433bf3b05f418b9e984aa1f)
 
  src/vtegtk.cc | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-commit bc2350df0fe7649160a3864826f10b23c78ef5ca
+commit 8ad57f190f33c41b1bc9051e919844a294feada9
 Author: Christian Persch <chpe@src.gnome.org>
 Date:   Tue Mar 28 22:51:45 2017 +0200
 
     spawn: async: Release reference to VteTerminal
     
     https://bugzilla.gnome.org/show_bug.cgi?id=780663
-    (cherry picked from commit 8ad57f190f33c41b1bc9051e919844a294feada9)
 
  src/vtegtk.cc | 2 ++
  1 file changed, 2 insertions(+)
 
-commit e6f4c83f12e2acf2eda6c58da5d78a0141380225
+commit 9b1d77603464362b7ee90a6b5ac285170359b255
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Wed Mar 22 21:55:18 2017 +0100
+
+    vteapp: Remove an unused variable
+
+ src/vteapp.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+commit a7d534ac6135fa303f899a9e13483fbe24d1a679
 Author: Christian Persch <chpe@src.gnome.org>
 Date:   Tue Mar 21 18:57:51 2017 +0100
 
     build: Disable vala for distcheck
-    
-    (cherry picked from commit a7d534ac6135fa303f899a9e13483fbe24d1a679)
 
  Makefile.am | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-commit 24afa1533a3c3e61ac07fc3ab8ff618d4a67013e
+commit 03b1a9271df6a27b43f05b1d9a5591a8bb10dde8
 Author: Christian Persch <chpe@src.gnome.org>
-Date:   Tue Mar 21 18:54:06 2017 +0100
+Date:   Tue Mar 21 09:37:18 2017 +0100
 
     build: Revert "build: Fix building the vala test app with builddir != srcdir"
     
@@ -169,11 +534,22 @@ Date:   Tue Mar 21 18:54:06 2017 +0100
  bindings/vala/Makefile.am | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-commit 90eb5d76faec4cfef345614501af0b06ae321678
-Author: Christian Persch <chpe@src.gnome.org>
-Date:   Mon Mar 20 21:59:28 2017 +0100
+commit ccd5023b65ff37936a44a765ba3abd189596a6b3
+Author: Egmont Koblinger <egmont@gmail.com>
+Date:   Mon Mar 20 22:33:33 2017 +0100
 
-    Post release version bump
+    emulation: Character deletion switches to hard line ending
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=780011
+
+ src/vteseq.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 8e8f8417e88cf102f7b958418ca6a1af7a21db09
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Mon Mar 20 21:57:58 2017 +0100
+
+    Post branch version bump
 
  configure.ac | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
