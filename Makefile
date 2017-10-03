@@ -1,5 +1,5 @@
 PKG_NAME := vte
-URL := https://download.gnome.org/sources/vte/0.50/vte-0.50.0.tar.xz
+URL := https://github.com/GNOME/vte/archive/0.50.1.tar.gz
 
 
 include ../common/Makefile.common
