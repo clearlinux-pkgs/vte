@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.52.1
-Release  : 25
+Release  : 26
 URL      : https://github.com/GNOME/vte/archive/0.52.1.tar.gz
 Source0  : https://github.com/GNOME/vte/archive/0.52.1.tar.gz
 Summary  : Vte terminal widget.
