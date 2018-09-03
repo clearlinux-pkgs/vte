@@ -1,1 +1,1 @@
---enable-vala=no
+--enable-vala=no --disable-test-application
