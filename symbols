@@ -28,6 +28,7 @@ libvte-2.91.so.0:vte_regex_jit
 libvte-2.91.so.0:vte_regex_new_for_match
 libvte-2.91.so.0:vte_regex_new_for_search
 libvte-2.91.so.0:vte_regex_ref
+libvte-2.91.so.0:vte_regex_substitute
 libvte-2.91.so.0:vte_regex_unref
 libvte-2.91.so.0:vte_set_test_flags
 libvte-2.91.so.0:vte_terminal_copy_clipboard

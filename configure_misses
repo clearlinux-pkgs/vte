@@ -1,3 +1,5 @@
+Configure miss: whether g++ supports C++17 features by default
+Configure miss: if g++ -std=gnu++17 static flag -static works
 Configure miss: sys/syslimits.h usability
 Configure miss: sys/syslimits.h presence
 Configure miss: sys/syslimits.h
