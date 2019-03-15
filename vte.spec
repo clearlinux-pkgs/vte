@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.56.0
-Release  : 31
+Release  : 32
 URL      : https://github.com/GNOME/vte/archive/0.56.0.tar.gz
 Source0  : https://github.com/GNOME/vte/archive/0.56.0.tar.gz
 Summary  : Vte terminal widget.
@@ -17,6 +17,7 @@ Requires: vte-license = %{version}-%{release}
 Requires: vte-locales = %{version}-%{release}
 BuildRequires : docbook-xml
 BuildRequires : gettext
+BuildRequires : glibc-bin
 BuildRequires : gnutls-dev
 BuildRequires : gobject-introspection-dev
 BuildRequires : gtk-doc
@@ -106,7 +107,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552352094
+export SOURCE_DATE_EPOCH=1552663915
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -123,7 +124,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1552352094
+export SOURCE_DATE_EPOCH=1552663915
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vte
 cp COPYING.GPL3 %{buildroot}/usr/share/package-licenses/vte/COPYING.GPL3
