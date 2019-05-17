@@ -6,3 +6,4 @@ gobject-introspection-dev
 gtk3-dev
 intltool
 intltool-dev
+vala-dev

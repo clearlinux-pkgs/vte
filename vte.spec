@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.56.3
-Release  : 35
+Release  : 36
 URL      : https://github.com/GNOME/vte/archive/0.56.3/vte-0.56.3.tar.gz
 Source0  : https://github.com/GNOME/vte/archive/0.56.3/vte-0.56.3.tar.gz
 Summary  : Vte terminal widget.
@@ -17,6 +17,7 @@ Requires: vte-license = %{version}-%{release}
 Requires: vte-locales = %{version}-%{release}
 BuildRequires : docbook-xml
 BuildRequires : gettext
+BuildRequires : glibc-bin
 BuildRequires : gnutls-dev
 BuildRequires : gobject-introspection-dev
 BuildRequires : gtk-doc
@@ -35,6 +36,7 @@ BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(libpcre2-8)
 BuildRequires : pkgconfig(pango)
 BuildRequires : sed
+BuildRequires : vala-dev
 Patch1: defaults.patch
 
 %description
@@ -106,7 +108,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557184196
+export SOURCE_DATE_EPOCH=1558114868
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -114,7 +117,7 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-m
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-%autogen --disable-static --enable-vala=no --disable-test-application
+%autogen --disable-static --enable-vala=yes --disable-test-application
 make  %{?_smp_mflags}
 
 %check
@@ -125,7 +128,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1557184196
+export SOURCE_DATE_EPOCH=1558114868
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vte
 cp COPYING.GPL3 %{buildroot}/usr/share/package-licenses/vte/COPYING.GPL3
@@ -145,6 +148,7 @@ cp COPYING.LGPL3 %{buildroot}/usr/share/package-licenses/vte/COPYING.LGPL3
 %defattr(-,root,root,-)
 /usr/lib64/girepository-1.0/Vte-2.91.typelib
 /usr/share/gir-1.0/*.gir
+/usr/share/vala/vapi/vte-2.91.vapi
 
 %files dev
 %defattr(-,root,root,-)
