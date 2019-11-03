@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.58.2
-Release  : 39
+Release  : 40
 URL      : https://download.gnome.org/sources/vte/0.58/vte-0.58.2.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.58/vte-0.58.2.tar.xz
 Summary  : No detailed summary available
