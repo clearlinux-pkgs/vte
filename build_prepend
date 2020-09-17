@@ -1,2 +1,2 @@
-export CFLAGS="$CFLAGS -fno-exceptions"
-export CXXFLAGS="$CFLAGS -fno-exceptions"
+export CFLAGS="$CFLAGS -fexceptions"
+export CXXFLAGS="$CFLAGS -fexceptions"
