@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.62.1
-Release  : 47
+Release  : 48
 URL      : https://download.gnome.org/sources/vte/0.62/vte-0.62.1.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.62/vte-0.62.1.tar.xz
 Summary  : No detailed summary available
@@ -124,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602176852
+export SOURCE_DATE_EPOCH=1605816517
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -144,6 +144,12 @@ cp %{_builddir}/vte-0.62.1/COPYING.LGPL2 %{buildroot}/usr/share/package-licenses
 cp %{_builddir}/vte-0.62.1/COPYING.LGPL3 %{buildroot}/usr/share/package-licenses/vte/e203d4ef09d404fa5c03cf6590e44231665be689
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang vte-2.91
+## install_append content
+src=%{buildroot}/etc/profile.d/vte.sh
+dest=%{buildroot}/usr/share/defaults/etc/profile.d
+mkdir -p $dest
+cp -a $src $dest/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -155,6 +161,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files data
 %defattr(-,root,root,-)
 /usr/lib64/girepository-1.0/Vte-2.91.typelib
+/usr/share/defaults/etc/profile.d/vte.sh
 /usr/share/gir-1.0/*.gir
 /usr/share/vala/vapi/vte-2.91.deps
 /usr/share/vala/vapi/vte-2.91.vapi

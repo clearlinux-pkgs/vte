@@ -1,0 +1,4 @@
+src=%{buildroot}/etc/profile.d/vte.sh
+dest=%{buildroot}/usr/share/defaults/etc/profile.d
+mkdir -p $dest
+cp -a $src $dest/
