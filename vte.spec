@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.64.2
-Release  : 53
+Release  : 54
 URL      : https://download.gnome.org/sources/vte/0.64/vte-0.64.2.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.64/vte-0.64.2.tar.xz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 LGPL-3.0 MIT
 Requires: vte-bin = %{version}-%{release}
 Requires: vte-data = %{version}-%{release}
+Requires: vte-filemap = %{version}-%{release}
 Requires: vte-lib = %{version}-%{release}
 Requires: vte-libexec = %{version}-%{release}
 Requires: vte-license = %{version}-%{release}
@@ -40,6 +41,7 @@ Requires: vte-data = %{version}-%{release}
 Requires: vte-libexec = %{version}-%{release}
 Requires: vte-license = %{version}-%{release}
 Requires: vte-services = %{version}-%{release}
+Requires: vte-filemap = %{version}-%{release}
 
 %description bin
 bin components for the vte package.
@@ -66,12 +68,21 @@ Requires: vte = %{version}-%{release}
 dev components for the vte package.
 
 
+%package filemap
+Summary: filemap components for the vte package.
+Group: Default
+
+%description filemap
+filemap components for the vte package.
+
+
 %package lib
 Summary: lib components for the vte package.
 Group: Libraries
 Requires: vte-data = %{version}-%{release}
 Requires: vte-libexec = %{version}-%{release}
 Requires: vte-license = %{version}-%{release}
+Requires: vte-filemap = %{version}-%{release}
 
 %description lib
 lib components for the vte package.
@@ -81,6 +92,7 @@ lib components for the vte package.
 Summary: libexec components for the vte package.
 Group: Default
 Requires: vte-license = %{version}-%{release}
+Requires: vte-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the vte package.
@@ -114,6 +126,9 @@ services components for the vte package.
 %setup -q -n vte-0.64.2
 cd %{_builddir}/vte-0.64.2
 %patch1 -p1
+pushd ..
+cp -a vte-0.64.2 buildavx2
+popd
 
 %build
 ## build_prepend content
@@ -124,17 +139,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623884147
+export SOURCE_DATE_EPOCH=1634133035
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=4 -fno-semantic-interposition -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/vte
@@ -142,6 +159,7 @@ cp %{_builddir}/vte-0.64.2/COPYING.CC-BY-4-0 %{buildroot}/usr/share/package-lice
 cp %{_builddir}/vte-0.64.2/COPYING.GPL3 %{buildroot}/usr/share/package-licenses/vte/a742ddd48b78f2a7a13ac678ce5ecacf93c771ee
 cp %{_builddir}/vte-0.64.2/COPYING.LGPL3 %{buildroot}/usr/share/package-licenses/vte/e203d4ef09d404fa5c03cf6590e44231665be689
 cp %{_builddir}/vte-0.64.2/COPYING.XTERM %{buildroot}/usr/share/package-licenses/vte/704ec162c7e726301bf2b873fa99052b40250a99
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang vte-2.91
 ## install_append content
@@ -150,6 +168,7 @@ dest=%{buildroot}/usr/share/defaults/etc/profile.d
 mkdir -p $dest
 cp -a $src $dest/
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -157,6 +176,7 @@ cp -a $src $dest/
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/vte-2.91
+/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -184,14 +204,20 @@ cp -a $src $dest/
 /usr/lib64/libvte-2.91.so
 /usr/lib64/pkgconfig/vte-2.91.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-vte
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libvte-2.91.so.0
 /usr/lib64/libvte-2.91.so.0.6400.2
+/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
 /usr/libexec/vte-urlencode-cwd
+/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
