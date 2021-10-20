@@ -77,6 +77,7 @@ libvte-2.91.so.0:vte_terminal_get_rewrap_on_resize
 libvte-2.91.so.0:vte_terminal_get_row_count
 libvte-2.91.so.0:vte_terminal_get_scroll_on_keystroke
 libvte-2.91.so.0:vte_terminal_get_scroll_on_output
+libvte-2.91.so.0:vte_terminal_get_scroll_unit_is_pixels
 libvte-2.91.so.0:vte_terminal_get_scrollback_lines
 libvte-2.91.so.0:vte_terminal_get_text
 libvte-2.91.so.0:vte_terminal_get_text_blink_mode
@@ -144,6 +145,7 @@ libvte-2.91.so.0:vte_terminal_set_pty
 libvte-2.91.so.0:vte_terminal_set_rewrap_on_resize
 libvte-2.91.so.0:vte_terminal_set_scroll_on_keystroke
 libvte-2.91.so.0:vte_terminal_set_scroll_on_output
+libvte-2.91.so.0:vte_terminal_set_scroll_unit_is_pixels
 libvte-2.91.so.0:vte_terminal_set_scrollback_lines
 libvte-2.91.so.0:vte_terminal_set_size
 libvte-2.91.so.0:vte_terminal_set_text_blink_mode
