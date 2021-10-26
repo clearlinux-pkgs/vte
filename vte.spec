@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.66.0
-Release  : 56
+Release  : 57
 URL      : https://download.gnome.org/sources/vte/0.66/vte-0.66.0.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.66/vte-0.66.0.tar.xz
 Summary  : No detailed summary available
