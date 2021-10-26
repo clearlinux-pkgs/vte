@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.66.0
-Release  : 55
+Release  : 56
 URL      : https://download.gnome.org/sources/vte/0.66/vte-0.66.0.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.66/vte-0.66.0.tar.xz
 Summary  : No detailed summary available
@@ -66,6 +66,14 @@ Requires: vte = %{version}-%{release}
 
 %description dev
 dev components for the vte package.
+
+
+%package extras
+Summary: extras components for the vte package.
+Group: Default
+
+%description extras
+extras components for the vte package.
 
 
 %package filemap
@@ -139,7 +147,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634750334
+export SOURCE_DATE_EPOCH=1635291853
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -181,7 +189,6 @@ cp -a $src $dest/
 %files data
 %defattr(-,root,root,-)
 /usr/lib64/girepository-1.0/Vte-2.91.typelib
-/usr/share/defaults/etc/profile.d/vte.sh
 /usr/share/gir-1.0/*.gir
 /usr/share/glade/catalogs/vte-2.91.xml
 /usr/share/glade/pixmaps/hicolor/16x16/actions/widget-vte-terminal.png
@@ -204,6 +211,10 @@ cp -a $src $dest/
 /usr/include/vte-2.91/vte/vteversion.h
 /usr/lib64/libvte-2.91.so
 /usr/lib64/pkgconfig/vte-2.91.pc
+
+%files extras
+%defattr(-,root,root,-)
+/usr/share/defaults/etc/profile.d/vte.sh
 
 %files filemap
 %defattr(-,root,root,-)
