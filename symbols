@@ -1,3 +1,4 @@
+libvte-2.91.so.0:vte_align_get_type
 libvte-2.91.so.0:vte_cursor_blink_mode_get_type
 libvte-2.91.so.0:vte_cursor_shape_get_type
 libvte-2.91.so.0:vte_erase_binding_get_type
@@ -99,6 +100,7 @@ libvte-2.91.so.0:vte_terminal_match_set_cursor_type
 libvte-2.91.so.0:vte_terminal_new
 libvte-2.91.so.0:vte_terminal_paste_clipboard
 libvte-2.91.so.0:vte_terminal_paste_primary
+libvte-2.91.so.0:vte_terminal_paste_text
 libvte-2.91.so.0:vte_terminal_pty_new_sync
 libvte-2.91.so.0:vte_terminal_reset
 libvte-2.91.so.0:vte_terminal_search_find_next
