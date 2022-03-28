@@ -1,5 +1,7 @@
---- vte-0.64.0/src/vtedefines.hh	2021-04-19 22:55:33.665520166 +0000
-+++ vte-0.64.0/src/vtedefines.hh~	2021-04-16 17:22:42.000000000 +0000
+diff --git a/src/vtedefines.hh b/src/vtedefines.hh
+index 23827c9..65b8eb2 100644
+--- a/src/vtedefines.hh
++++ b/src/vtedefines.hh
 @@ -73,7 +73,7 @@
  #define VTE_CURSOR_FG                   262
  #define VTE_PALETTE_SIZE		263
