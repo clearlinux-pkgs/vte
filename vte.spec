@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.68.0
-Release  : 63
+Release  : 64
 URL      : https://download.gnome.org/sources/vte/0.68/vte-0.68.0.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.68/vte-0.68.0.tar.xz
 Summary  : No detailed summary available
@@ -147,15 +147,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648496049
+export SOURCE_DATE_EPOCH=1656351954
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
@@ -176,7 +176,7 @@ dest=%{buildroot}/usr/share/defaults/etc/profile.d
 mkdir -p $dest
 cp -a $src $dest/
 ## install_append end
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -209,6 +209,7 @@ cp -a $src $dest/
 /usr/include/vte-2.91/vte/vtetypebuiltins-gtk3.h
 /usr/include/vte-2.91/vte/vtetypebuiltins.h
 /usr/include/vte-2.91/vte/vteversion.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so
 /usr/lib64/libvte-2.91.so
 /usr/lib64/pkgconfig/vte-2.91.pc
 
@@ -222,9 +223,10 @@ cp -a $src $dest/
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0.6800.0
 /usr/lib64/libvte-2.91.so.0
 /usr/lib64/libvte-2.91.so.0.6800.0
-/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
