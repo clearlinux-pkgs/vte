@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.70.0
-Release  : 70
+Release  : 71
 URL      : https://download.gnome.org/sources/vte/0.70/vte-0.70.0.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.70/vte-0.70.0.tar.xz
 Summary  : No detailed summary available
@@ -147,7 +147,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663609201
+export SOURCE_DATE_EPOCH=1663980055
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -156,9 +156,9 @@ export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=a
 export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dgtk4=true  builddir
 ninja -v -C builddir
-CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dgtk4=true  builddiravx2
 ninja -v -C builddiravx2
 
 %install
@@ -184,20 +184,35 @@ cp -a $src $dest/
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/vte-2.91
+/usr/bin/vte-2.91-gtk4
 /usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
 /usr/lib64/girepository-1.0/Vte-2.91.typelib
+/usr/lib64/girepository-1.0/Vte-3.91.typelib
 /usr/share/gir-1.0/*.gir
 /usr/share/glade/catalogs/vte-2.91.xml
 /usr/share/glade/pixmaps/hicolor/16x16/actions/widget-vte-terminal.png
 /usr/share/glade/pixmaps/hicolor/22x22/actions/widget-vte-terminal.png
+/usr/share/vala/vapi/vte-2.91-gtk4.deps
+/usr/share/vala/vapi/vte-2.91-gtk4.vapi
 /usr/share/vala/vapi/vte-2.91.deps
 /usr/share/vala/vapi/vte-2.91.vapi
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/vte-2.91-gtk4/vte/vte.h
+/usr/include/vte-2.91-gtk4/vte/vtedeprecated.h
+/usr/include/vte-2.91-gtk4/vte/vteenums.h
+/usr/include/vte-2.91-gtk4/vte/vteglobals.h
+/usr/include/vte-2.91-gtk4/vte/vtemacros.h
+/usr/include/vte-2.91-gtk4/vte/vtepty.h
+/usr/include/vte-2.91-gtk4/vte/vteregex.h
+/usr/include/vte-2.91-gtk4/vte/vteterminal.h
+/usr/include/vte-2.91-gtk4/vte/vtetypebuiltins-gtk4.h
+/usr/include/vte-2.91-gtk4/vte/vtetypebuiltins.h
+/usr/include/vte-2.91-gtk4/vte/vteversion.h
 /usr/include/vte-2.91/vte/vte.h
 /usr/include/vte-2.91/vte/vtedeprecated.h
 /usr/include/vte-2.91/vte/vteenums.h
@@ -209,8 +224,11 @@ cp -a $src $dest/
 /usr/include/vte-2.91/vte/vtetypebuiltins-gtk3.h
 /usr/include/vte-2.91/vte/vtetypebuiltins.h
 /usr/include/vte-2.91/vte/vteversion.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91-gtk4.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so
+/usr/lib64/libvte-2.91-gtk4.so
 /usr/lib64/libvte-2.91.so
+/usr/lib64/pkgconfig/vte-2.91-gtk4.pc
 /usr/lib64/pkgconfig/vte-2.91.pc
 
 %files extras
@@ -223,8 +241,10 @@ cp -a $src $dest/
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91-gtk4.so.0
 /usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0
 /usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0.7000.0
+/usr/lib64/libvte-2.91-gtk4.so.0
 /usr/lib64/libvte-2.91.so.0
 /usr/lib64/libvte-2.91.so.0.7000.0
 
