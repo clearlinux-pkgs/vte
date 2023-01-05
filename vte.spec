@@ -4,7 +4,7 @@
 #
 Name     : vte
 Version  : 0.70.2
-Release  : 75
+Release  : 76
 URL      : https://download.gnome.org/sources/vte/0.70/vte-0.70.2.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.70/vte-0.70.2.tar.xz
 Summary  : No detailed summary available
