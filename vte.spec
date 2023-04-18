@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : vte
-Version  : 0.72.0
-Release  : 79
-URL      : https://download.gnome.org/sources/vte/0.72/vte-0.72.0.tar.xz
-Source0  : https://download.gnome.org/sources/vte/0.72/vte-0.72.0.tar.xz
+Version  : 0.72.1
+Release  : 80
+URL      : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
+Source0  : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 LGPL-3.0 MIT
@@ -129,17 +129,18 @@ locales components for the vte package.
 %package services
 Summary: services components for the vte package.
 Group: Systemd services
+Requires: systemd
 
 %description services
 services components for the vte package.
 
 
 %prep
-%setup -q -n vte-0.72.0
-cd %{_builddir}/vte-0.72.0
+%setup -q -n vte-0.72.1
+cd %{_builddir}/vte-0.72.1
 %patch1 -p1
 pushd ..
-cp -a vte-0.72.0 buildavx2
+cp -a vte-0.72.1 buildavx2
 popd
 
 %build
@@ -151,7 +152,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680043844
+export SOURCE_DATE_EPOCH=1681835303
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -247,10 +248,10 @@ cp -a $src $dest/
 %defattr(-,root,root,-)
 /usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91-gtk4.so.0
 /usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0.7200.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0.7200.1
 /usr/lib64/libvte-2.91-gtk4.so.0
 /usr/lib64/libvte-2.91.so.0
-/usr/lib64/libvte-2.91.so.0.7200.0
+/usr/lib64/libvte-2.91.so.0.7200.1
 
 %files libexec
 %defattr(-,root,root,-)
