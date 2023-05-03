@@ -5,7 +5,7 @@
 #
 Name     : vte
 Version  : 0.72.1
-Release  : 80
+Release  : 81
 URL      : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Summary  : No detailed summary available
@@ -13,7 +13,6 @@ Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 LGPL-3.0 MIT
 Requires: vte-bin = %{version}-%{release}
 Requires: vte-data = %{version}-%{release}
-Requires: vte-filemap = %{version}-%{release}
 Requires: vte-lib = %{version}-%{release}
 Requires: vte-libexec = %{version}-%{release}
 Requires: vte-license = %{version}-%{release}
@@ -45,7 +44,6 @@ Requires: vte-data = %{version}-%{release}
 Requires: vte-libexec = %{version}-%{release}
 Requires: vte-license = %{version}-%{release}
 Requires: vte-services = %{version}-%{release}
-Requires: vte-filemap = %{version}-%{release}
 
 %description bin
 bin components for the vte package.
@@ -80,21 +78,12 @@ Group: Default
 extras components for the vte package.
 
 
-%package filemap
-Summary: filemap components for the vte package.
-Group: Default
-
-%description filemap
-filemap components for the vte package.
-
-
 %package lib
 Summary: lib components for the vte package.
 Group: Libraries
 Requires: vte-data = %{version}-%{release}
 Requires: vte-libexec = %{version}-%{release}
 Requires: vte-license = %{version}-%{release}
-Requires: vte-filemap = %{version}-%{release}
 
 %description lib
 lib components for the vte package.
@@ -104,7 +93,6 @@ lib components for the vte package.
 Summary: libexec components for the vte package.
 Group: Default
 Requires: vte-license = %{version}-%{release}
-Requires: vte-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the vte package.
@@ -152,15 +140,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681835303
+export SOURCE_DATE_EPOCH=1683124793
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dgtk4=true  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dgtk4=true  builddiravx2
@@ -188,9 +176,10 @@ cp -a $src $dest/
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/vte-2.91
+/V3/usr/bin/vte-2.91-gtk4
 /usr/bin/vte-2.91
 /usr/bin/vte-2.91-gtk4
-/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -207,6 +196,8 @@ cp -a $src $dest/
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libvte-2.91-gtk4.so
+/V3/usr/lib64/libvte-2.91.so
 /usr/include/vte-2.91-gtk4/vte/vte.h
 /usr/include/vte-2.91-gtk4/vte/vtedeprecated.h
 /usr/include/vte-2.91-gtk4/vte/vteenums.h
@@ -229,8 +220,6 @@ cp -a $src $dest/
 /usr/include/vte-2.91/vte/vtetypebuiltins-gtk3.h
 /usr/include/vte-2.91/vte/vtetypebuiltins.h
 /usr/include/vte-2.91/vte/vteversion.h
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91-gtk4.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so
 /usr/lib64/libvte-2.91-gtk4.so
 /usr/lib64/libvte-2.91.so
 /usr/lib64/pkgconfig/vte-2.91-gtk4.pc
@@ -240,23 +229,19 @@ cp -a $src $dest/
 %defattr(-,root,root,-)
 /usr/share/defaults/etc/profile.d/vte.sh
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-vte
-
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91-gtk4.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libvte-2.91.so.0.7200.1
+/V3/usr/lib64/libvte-2.91-gtk4.so.0
+/V3/usr/lib64/libvte-2.91.so.0
+/V3/usr/lib64/libvte-2.91.so.0.7200.1
 /usr/lib64/libvte-2.91-gtk4.so.0
 /usr/lib64/libvte-2.91.so.0
 /usr/lib64/libvte-2.91.so.0.7200.1
 
 %files libexec
 %defattr(-,root,root,-)
+/V3/usr/libexec/vte-urlencode-cwd
 /usr/libexec/vte-urlencode-cwd
-/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
