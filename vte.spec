@@ -5,7 +5,7 @@
 #
 Name     : vte
 Version  : 0.72.1
-Release  : 83
+Release  : 84
 URL      : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Summary  : No detailed summary available
@@ -140,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683239231
+export SOURCE_DATE_EPOCH=1685488706
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -196,8 +196,6 @@ cp -a $src $dest/
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libvte-2.91-gtk4.so
-/V3/usr/lib64/libvte-2.91.so
 /usr/include/vte-2.91-gtk4/vte/vte.h
 /usr/include/vte-2.91-gtk4/vte/vtedeprecated.h
 /usr/include/vte-2.91-gtk4/vte/vteenums.h
@@ -232,7 +230,6 @@ cp -a $src $dest/
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/libvte-2.91-gtk4.so.0
-/V3/usr/lib64/libvte-2.91.so.0
 /V3/usr/lib64/libvte-2.91.so.0.7200.1
 /usr/lib64/libvte-2.91-gtk4.so.0
 /usr/lib64/libvte-2.91.so.0
