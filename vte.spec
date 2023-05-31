@@ -5,7 +5,7 @@
 #
 Name     : vte
 Version  : 0.72.1
-Release  : 84
+Release  : 85
 URL      : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.72/vte-0.72.1.tar.xz
 Summary  : No detailed summary available
