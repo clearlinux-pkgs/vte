@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : vte
-Version  : 0.72.2
-Release  : 86
-URL      : https://download.gnome.org/sources/vte/0.72/vte-0.72.2.tar.xz
-Source0  : https://download.gnome.org/sources/vte/0.72/vte-0.72.2.tar.xz
+Version  : 0.74.0
+Release  : 87
+URL      : https://download.gnome.org/sources/vte/0.74/vte-0.74.0.tar.xz
+Source0  : https://download.gnome.org/sources/vte/0.74/vte-0.74.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 LGPL-3.0 MIT
@@ -124,11 +124,11 @@ services components for the vte package.
 
 
 %prep
-%setup -q -n vte-0.72.2
-cd %{_builddir}/vte-0.72.2
-%patch1 -p1
+%setup -q -n vte-0.74.0
+cd %{_builddir}/vte-0.74.0
+%patch -P 1 -p1
 pushd ..
-cp -a vte-0.72.2 buildavx2
+cp -a vte-0.74.0 buildavx2
 popd
 
 %build
@@ -140,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685998933
+export SOURCE_DATE_EPOCH=1695069443
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -230,10 +230,10 @@ cp -a $src $dest/
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/libvte-2.91-gtk4.so.0
-/V3/usr/lib64/libvte-2.91.so.0.7200.2
+/V3/usr/lib64/libvte-2.91.so.0.7400.0
 /usr/lib64/libvte-2.91-gtk4.so.0
 /usr/lib64/libvte-2.91.so.0
-/usr/lib64/libvte-2.91.so.0.7200.2
+/usr/lib64/libvte-2.91.so.0.7400.0
 
 %files libexec
 %defattr(-,root,root,-)

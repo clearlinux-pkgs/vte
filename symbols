@@ -68,6 +68,7 @@ libvte-2.91-gtk4.so.0:vte_terminal_get_enable_shaping
 libvte-2.91-gtk4.so.0:vte_terminal_get_enable_sixel
 libvte-2.91-gtk4.so.0:vte_terminal_get_encoding
 libvte-2.91-gtk4.so.0:vte_terminal_get_font
+libvte-2.91-gtk4.so.0:vte_terminal_get_font_options
 libvte-2.91-gtk4.so.0:vte_terminal_get_font_scale
 libvte-2.91-gtk4.so.0:vte_terminal_get_has_selection
 libvte-2.91-gtk4.so.0:vte_terminal_get_icon_title
@@ -136,6 +137,7 @@ libvte-2.91-gtk4.so.0:vte_terminal_set_enable_shaping
 libvte-2.91-gtk4.so.0:vte_terminal_set_enable_sixel
 libvte-2.91-gtk4.so.0:vte_terminal_set_encoding
 libvte-2.91-gtk4.so.0:vte_terminal_set_font
+libvte-2.91-gtk4.so.0:vte_terminal_set_font_options
 libvte-2.91-gtk4.so.0:vte_terminal_set_font_scale
 libvte-2.91-gtk4.so.0:vte_terminal_set_input_enabled
 libvte-2.91-gtk4.so.0:vte_terminal_set_mouse_autohide
@@ -225,6 +227,7 @@ libvte-2.91.so.0:vte_terminal_get_enable_shaping
 libvte-2.91.so.0:vte_terminal_get_enable_sixel
 libvte-2.91.so.0:vte_terminal_get_encoding
 libvte-2.91.so.0:vte_terminal_get_font
+libvte-2.91.so.0:vte_terminal_get_font_options
 libvte-2.91.so.0:vte_terminal_get_font_scale
 libvte-2.91.so.0:vte_terminal_get_geometry_hints
 libvte-2.91.so.0:vte_terminal_get_has_selection
@@ -300,6 +303,7 @@ libvte-2.91.so.0:vte_terminal_set_enable_shaping
 libvte-2.91.so.0:vte_terminal_set_enable_sixel
 libvte-2.91.so.0:vte_terminal_set_encoding
 libvte-2.91.so.0:vte_terminal_set_font
+libvte-2.91.so.0:vte_terminal_set_font_options
 libvte-2.91.so.0:vte_terminal_set_font_scale
 libvte-2.91.so.0:vte_terminal_set_geometry_hints_for_window
 libvte-2.91.so.0:vte_terminal_set_input_enabled
