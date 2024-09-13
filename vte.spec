@@ -7,7 +7,7 @@
 #
 Name     : vte
 Version  : 0.76.3
-Release  : 93
+Release  : 94
 URL      : https://download.gnome.org/sources/vte/0.76/vte-0.76.3.tar.xz
 Source0  : https://download.gnome.org/sources/vte/0.76/vte-0.76.3.tar.xz
 Summary  : No detailed summary available
