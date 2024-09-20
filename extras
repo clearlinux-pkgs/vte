@@ -1,1 +1,2 @@
 /usr/share/defaults/etc/profile.d/vte.sh
+/usr/lib64/libvte-2.91-gtk4.so.0
