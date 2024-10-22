@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : vte
-Version  : 0.78.0
-Release  : 96
-URL      : https://download.gnome.org/sources/vte/0.78/vte-0.78.0.tar.xz
-Source0  : https://download.gnome.org/sources/vte/0.78/vte-0.78.0.tar.xz
+Version  : 0.78.1
+Release  : 97
+URL      : https://download.gnome.org/sources/vte/0.78/vte-0.78.1.tar.xz
+Source0  : https://download.gnome.org/sources/vte/0.78/vte-0.78.1.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC-BY-4.0 GPL-3.0 LGPL-3.0 MIT
@@ -128,11 +128,11 @@ services components for the vte package.
 
 
 %prep
-%setup -q -n vte-0.78.0
-cd %{_builddir}/vte-0.78.0
+%setup -q -n vte-0.78.1
+cd %{_builddir}/vte-0.78.1
 %patch -P 1 -p1
 pushd ..
-cp -a vte-0.78.0 buildavx2
+cp -a vte-0.78.1 buildavx2
 popd
 
 %build
@@ -144,7 +144,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1726858447
+export SOURCE_DATE_EPOCH=1729557122
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -262,9 +262,9 @@ cp -a $src $dest/
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libvte-2.91.so.0.7800.0
+/V3/usr/lib64/libvte-2.91.so.0.7800.1
 /usr/lib64/libvte-2.91.so.0
-/usr/lib64/libvte-2.91.so.0.7800.0
+/usr/lib64/libvte-2.91.so.0.7800.1
 
 %files libexec
 %defattr(-,root,root,-)
